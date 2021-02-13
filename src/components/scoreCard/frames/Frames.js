@@ -43,11 +43,11 @@ class Frame extends Component {
       ...attempt
     ]
     let attemptDisplay = [ ...attempt ]
-    let pinsDisplay = pins;
+    let pinsLeft = pins;
 
 
    if(pins.toUpperCase() === 'X') {
-      pinsDisplay = 10
+      pinsLeft = 10
       attemptDisplay[frameIndex - 1] = 'X'
       newattempt[frameIndex - 1] = 10
       if(index !== 10) {
@@ -55,18 +55,18 @@ class Frame extends Component {
         newattempt[1] = ''
       }
     } else if(pins === '/') {
-      pinsDisplay = 10 - newattempt[0]
+      pinsLeft = 10 - newattempt[0]
       attemptDisplay[frameIndex - 1] = '/'
-      newattempt[frameIndex - 1] = pinsDisplay
+      newattempt[frameIndex - 1] = pinsLeft
     } else {
       attemptDisplay[frameIndex - 1] = pins
       newattempt[frameIndex - 1] = pins;
     }
 
     if(frameIndex === 2 && index !== 10 && (Number(newattempt[0]) + Number(pins) === 10)) {
-      pinsDisplay = 10 - newattempt[0]
+      pinsLeft = 10 - newattempt[0]
       attemptDisplay[1] = '/'
-      newattempt[1] = pinsDisplay
+      newattempt[1] = pinsLeft
     }
 
     this.setState((prevState) => {
@@ -83,7 +83,7 @@ class Frame extends Component {
     })
   
 
-    handleChange(index, frameIndex, pinsDisplay)
+    handleChange(index, frameIndex, pinsLeft)
 
   }
   validate = (value) => {
@@ -92,7 +92,7 @@ class Frame extends Component {
         return true
       } 
   }
-  handleOnChange = (event)  =>{
+  handleScoreChange = (event)  =>{
 
     const {
       target: {
@@ -124,9 +124,9 @@ class Frame extends Component {
     return(
       <div className={`player col-Frame frame-${index}`}>
         <div className={'score score-inputs'}>
-          <input ref="attempt1" data-attempt="1" type="text" className="form-control" value={attemptDisplay[0]} onChange={this.handleOnChange} />
-          <input ref="attempt2" data-attempt="2" disabled={checkStrike(attemptDisplay[0]) ? true : false} value={attemptDisplay[1]} onChange={this.handleOnChange} type="text" className={`form-control`}/>
-        {index === 10 ?  <input ref="attempt3" data-attempt="3" disabled={extraFrameDisabled ? false: true } onChange={this.handleOnChange} type="text" className={ extraFrameVisible ? 'form-control' : 'form-control hidden'}/> : null}
+          <input ref="attempt1" data-attempt="1" type="text" className="form-control" value={attemptDisplay[0]} onChange={this.handleScoreChange} />
+          <input ref="attempt2" data-attempt="2" disabled={checkStrike(attemptDisplay[0]) ? true : false} value={attemptDisplay[1]} onChange={this.handleScoreChange} type="text" className={`form-control`}/>
+        {index === 10 ?  <input ref="attempt3" data-attempt="3" disabled={extraFrameDisabled ? false: true } onChange={this.handleScoreChange} type="text" className={ extraFrameVisible ? 'form-control' : 'form-control hidden'}/> : null}
         </div>
       </div>
     )

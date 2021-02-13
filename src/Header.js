@@ -9,8 +9,8 @@ const headers = [
 
 function Header(){
   return (
-      <div>
-          <h1 className='table-header'>Best Buy Bowling</h1>
+      <>
+    <h1 className='table-header'>Best Buy Bowling</h1>
     <div className="header">
         
       { headers.map((header, id) => {
@@ -19,7 +19,7 @@ function Header(){
       })
       }
     </div>
-    </div>
+    </>
   )
 }
 
