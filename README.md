@@ -9,4 +9,6 @@ The scoring system was derived from the scoring section on wikipedia in an artic
 
 ---
 
-Create React App is licensed with the MIT License. More info can be found in the License.md file in the root directory.
+## Create React App is licensed with the MIT License. More info can be found in the License.md file in the root directory.
+
+I need to work on a way to add different Players Names and also add a button to reset the entire board and also trigger a color change for who is winning.
