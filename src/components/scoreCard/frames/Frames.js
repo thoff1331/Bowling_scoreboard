@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-const checkStrike = (attempt) => {
+const didStrike = (attempt) => {
   return attempt === 10 || attempt === 'X'
 }
 
@@ -117,7 +117,6 @@ class Frame extends Component {
 
 
     const tenthFrameStrike = index === 10;
-    const SecondTenthStrike = index === 10 && checkStrike(attemptDisplay[0])  ? true : false;
 
 
 
@@ -125,8 +124,8 @@ class Frame extends Component {
       <div className={`player col-Frame frame-${index}`}>
         <div className={'score score-inputs'}>
           <input ref="attempt1" data-attempt="1" type="text" className="form-control" value={attemptDisplay[0]} onChange={this.handleScoreChange} />
-          <input ref="attempt2" data-attempt="2" disabled={checkStrike(attemptDisplay[0]) && index !== 10  ? true : false} value={attemptDisplay[1]} onChange={this.handleScoreChange} type="text" className={`form-control`}/>
-        {index === 10 ?  <input ref="attempt3" data-attempt="3" disabled={checkStrike(attemptDisplay[1]) && checkStrike(attemptDisplay[0]) ? false: true} onChange={this.handleScoreChange} type="text" className={tenthFrameStrike? 'form-control' : 'form-control hidden'}/> : null}
+          <input ref="attempt2" data-attempt="2" disabled={didStrike(attemptDisplay[0]) && index !== 10  ? true : false} value={attemptDisplay[1]} onChange={this.handleScoreChange} type="text" className={`form-control`}/>
+        {index === 10 ?  <input ref="attempt3" data-attempt="3" disabled={didStrike(attemptDisplay[1]) && didStrike(attemptDisplay[0]) ? false: true} onChange={this.handleScoreChange} type="text" className={tenthFrameStrike? 'form-control' : 'form-control hidden'}/> : null}
         </div>
       </div>
     )
