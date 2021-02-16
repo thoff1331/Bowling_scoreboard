@@ -32,17 +32,16 @@ class Player extends Component {
   scoreChange() {
     const { frames } = this.state;
     let total = 0;
-    let that = this;
 
      frames.push([0])
-     frames.forEach(function(frame, idx) {
-       frame.forEach(function(score) { total += score; });
+     frames.forEach((frame, idx) => {
+       frame.forEach((score) => { total += score; });
        if (idx >= 9) { return; }
-       if (that.Spare(frame)) { total += frames[idx+1][0]; }
-       if (that.Strike(frame)) {
+       if (this.Spare(frame)) { total += frames[idx+1][0]; }
+       if (this.Strike(frame)) {
          total += frames[idx+1][0]
          if (frames[idx+1].length >= 2) { total += frames[idx+1][1]; }
-         if (that.Strike(frames[idx+1])) { total += frames[idx+2][0]; }
+         if (this.Strike(frames[idx+1])) { total += frames[idx+2][0]; }
        }
      })
     
@@ -69,7 +68,7 @@ class Player extends Component {
     let newState = {
       frames: newFrames
     }
-    this.setState((prevState) => {
+    this.setState(() => {
       return newState
     })
 
@@ -83,7 +82,7 @@ class Player extends Component {
     return (
       <div className="player-rows ">
         <Names  PlayerName={name} />
-        { frames.map((frame, idx) => {
+        {frames.map((frames,idx) => {
           return <Frame player={index} index={idx + 1}  handleChange={this.handleChange} />
         })}
         <Scores score={score} />

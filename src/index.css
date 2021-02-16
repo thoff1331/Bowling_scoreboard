@@ -90,3 +90,11 @@ body {
 .player.frame-10 .form-control:last-child {
   margin-left: 8px;
 }
+
+.change-name-inputs {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vh;
+}

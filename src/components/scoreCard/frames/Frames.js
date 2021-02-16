@@ -68,7 +68,8 @@ class Frame extends Component {
       attemptDisplay[1] = '/'
       newattempt[1] = pinsLeft
     }
-
+console.log(newattempt)
+debugger
     this.setState((prevState) => {
       return {
         ...prevState,
@@ -125,7 +126,7 @@ class Frame extends Component {
         <div className={'score score-inputs'}>
           <input ref="attempt1" data-attempt="1" type="text" className="form-control" value={attemptDisplay[0]} onChange={this.handleScoreChange} />
           <input ref="attempt2" data-attempt="2" disabled={didStrike(attemptDisplay[0]) && index !== 10  ? true : false} value={attemptDisplay[1]} onChange={this.handleScoreChange} type="text" className={`form-control`}/>
-        {index === 10 ?  <input ref="attempt3" data-attempt="3" disabled={didStrike(attemptDisplay[1]) && didStrike(attemptDisplay[0]) ? false: true} onChange={this.handleScoreChange} type="text" className={tenthFrameStrike? 'form-control' : 'form-control hidden'}/> : null}
+        {index === 10 ?  <input ref="attempt3" data-attempt="3" disabled={didStrike(attemptDisplay[1]) && didStrike(attemptDisplay[0]) ? false: true} onChange={this.handleScoreChange} type="text" className={tenthFrameStrike ? 'form-control' : 'form-control hidden'}/> : null}
         </div>
       </div>
     )
